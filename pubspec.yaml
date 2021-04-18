@@ -58,6 +58,8 @@ dependencies:
   get:
 
   flutter_svg:
+  wifi:
+  wifi_info_flutter: ^2.0.0
 
 dev_dependencies:
   # flutter_launcher_icons: "^0.7.3"
