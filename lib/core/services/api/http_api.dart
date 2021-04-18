@@ -81,10 +81,11 @@ class HttpApi implements Api {
           return await request(endPoint,
               body: body,
               queryParameters: queryParameters,
-              headers: Header.userAuth,
+              headers: Header.clientAuth,
               context: context,
               type: type,
               contentType: contentType,
+              
               responseType: responseType,
               retry: true);
         } else if (e.response.statusCode == 401 && retry && context != null) {

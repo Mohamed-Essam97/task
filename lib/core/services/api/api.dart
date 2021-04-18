@@ -23,8 +23,8 @@ class Header {
 
   static Map<String, dynamic> get clientAuth => {'Authorization': ''};
 
-  static Map<String, dynamic> get userAuth =>
-      {'Authorization': 'Bearer ${Preference.getString(PrefKeys.fcmToken)}'};
+  // static Map<String, dynamic> get userAuth =>
+  //     {'Authorization': 'Bearer ${Preference.getString(PrefKeys.fcmToken)}'};
 }
 
 class EndPoint {

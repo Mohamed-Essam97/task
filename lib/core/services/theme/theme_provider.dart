@@ -4,7 +4,7 @@ import 'package:testapp/core/services/preference/preference.dart';
 class ThemeProvider with ChangeNotifier {
   bool isDark;
   ThemeProvider() {
-    isDark = Preference.getBool(PrefKeys.isDark) ?? true;
+    isDark =  true;
   }
   ThemeData dark = ThemeData(
     primaryColor: Color(0xffab351c),
@@ -40,7 +40,6 @@ class ThemeProvider with ChangeNotifier {
 
   get switchTheme {
     isDark = !isDark;
-    Preference.setBool(PrefKeys.isDark, isDark);
     notifyListeners();
   }
 }

@@ -39,13 +39,12 @@ class TransparentButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final locale = AppLocalizations.of(context);
-
     return Padding(
       padding: margin,
       child: MaterialButton(
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(raduis), side: BorderSide(style: BorderStyle.solid, width: 2, color: color)),
+            borderRadius: BorderRadius.circular(raduis),
+            side: BorderSide(style: BorderStyle.solid, width: 2, color: color)),
         elevation: elevation,
         hoverElevation: 0,
         focusElevation: 0,
@@ -55,8 +54,11 @@ class TransparentButton extends StatelessWidget {
         child: Padding(
           padding: padding,
           child: child ??
-              Text(localize ? locale.get(text) : text,
-                  style: TextStyle(color: textColor, fontSize: 14, fontWeight: bold ? FontWeight.bold : FontWeight.normal)),
+              Text(text,
+                  style: TextStyle(
+                      color: textColor,
+                      fontSize: 14,
+                      fontWeight: bold ? FontWeight.bold : FontWeight.normal)),
         ),
       ),
     );

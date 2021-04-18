@@ -38,7 +38,6 @@ class NormalButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final locale = AppLocalizations.of(context);
 
     return Padding(
       padding: margin,
@@ -57,7 +56,7 @@ class NormalButton extends StatelessWidget {
           padding: padding,
           child: child ??
               Text(
-                localize ? locale.get(text) : text,
+               text,
                 style: TextStyle(
                   color: textColor,
                   fontSize: 14,

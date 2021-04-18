@@ -22,77 +22,58 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  
   #Logic
   dio: ^4.0.0
   connectivity: ^3.0.3 #TODO: Config IOS
   firebase_messaging: ^9.1.1 #TODO: Config IOS
   permission_handler: ^6.1.1
   either_option: ^1.0.6
-  rxdart: ^0.26.0
-  sqflite: ^2.0.0+3
-  flutter_local_notifications: ^5.0.0+1
 
+  ping_discover_network: ^0.2.0+1
+
+  flutter_webview_plugin: ^0.3.11
+
+  #Auth
+  google_sign_in:
+  firebase_auth:
+  cloud_firestore: #TODO config ios
+  flutter_facebook_login:
 
   cached_network_image: ^3.0.0
-  
+
   #data presistance
   path_provider: ^2.0.1
   # cloud_firestore: ^1.0.4
-  firebase_core: ^1.0.3
-  shared_preferences: ^2.0.5
-  device_info: ^2.0.0 #TODO: config ios
-
+  firebase_core:
 
   #UI
   overlay_support: ^1.2.0
-  base_notifier: 
+  base_notifier:
   ui_utils:
-  animations: ^2.0.0
-  reactive_forms: ^10.0.3
 
-  
   #database
-  floor: ^1.0.1
-
 
   logger: ^1.0.0
-  provider: ^5.0.0
-  get: ^4.1.3
+  provider:
+  get:
 
-  # fluttertoast: ^7.1.1
-  page_transition: ^1.1.7+6
-  url_launcher: ^6.0.3
-  carousel_slider: ^3.0.0
-  google_fonts: ^2.0.0
-  # cupertino_icons: ^1.0.1
-  pull_to_refresh: ^1.6.4
-  flutter_rating_bar: ^4.0.0
-  flutter_svg: ^0.19.3
-
+  flutter_svg:
 
 dev_dependencies:
   # flutter_launcher_icons: "^0.7.3"
   flutter_test:
     sdk: flutter
 
-dependency_overrides:
-  xml: ^5.1.0
-  provider: ^5.0.0
-
-  
 flutter_icons: #to generate use command $flutter pub run flutter_launcher_icons:main
-  android: "launcher_icon" 
+  android: "launcher_icon"
   ios: true
   image_path: "assets/images/logo.png"
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -100,16 +81,13 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/
-   - assets/images/
-   - "assets/languages/"
-
+    - assets/
+    - assets/images/
+    - "assets/languages/"
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
@@ -129,11 +107,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-    
-    # fonts:
-    # - family: .SF NS Text
-    #   fonts:
-    #     - asset: assets/fonts/SFNSText.ttf
-    # - family: .SF NS Display
-    #   fonts:
-    #     - asset: assets/fonts/SFNSDisplay.ttf
+  # fonts:
+  # - family: .SF NS Text
+  #   fonts:
+  #     - asset: assets/fonts/SFNSText.ttf
+  # - family: .SF NS Display
+  #   fonts:
+  #     - asset: assets/fonts/SFNSDisplay.ttf

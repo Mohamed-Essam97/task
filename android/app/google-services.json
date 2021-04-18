@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "249678901267",
+    "project_id": "mecca-93cbe",
+    "storage_bucket": "mecca-93cbe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249678901267:android:56e69e049664f429ed4fe6",
+        "android_client_info": {
+          "package_name": "com.example.Mecca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "249678901267-9r28k8n8iki8mtm2s2uev02kkdu1vuj1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.Mecca",
+            "certificate_hash": "818f62c081b20e474c8569221f6cf1551bb8b9fd"
+          }
+        },
+        {
+          "client_id": "249678901267-rrn8u1cc7qsld5mt0a2dp32e6823m9vp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.Mecca",
+            "certificate_hash": "0acc62674eefc0df934428b009360d46c61788d9"
+          }
+        },
+        {
+          "client_id": "249678901267-lbtltbo7p1nvuf4q9vb5dm3d3r1bflr2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAxYNe0c2P5JQBrqCVqIIam-w2ettV8_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "249678901267-lbtltbo7p1nvuf4q9vb5dm3d3r1bflr2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "249678901267-pru2n90lfofrdch0b8hjh59825t7pd5j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.Mecca"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

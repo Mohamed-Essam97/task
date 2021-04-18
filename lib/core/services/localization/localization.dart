@@ -10,11 +10,11 @@ class AppLanguageModel extends ChangeNotifier {
   Locale get appLocal => _appLocale ?? Locale("en");
 
   fetchLocale() async {
-    if (Preference.getString(PrefKeys.languageCode) == null) {
+    // if (Preference.getString(PrefKeys.languageCode) == null) {
       _appLocale = Locale('en');
-    } else {
-      _appLocale = Locale(Preference.getString(PrefKeys.languageCode));
-    }
+    // } else {
+      // _appLocale = Locale(Preference.getString(PrefKeys.languageCode));
+    // }
     notifyListeners();
 
     return null;
@@ -27,11 +27,11 @@ class AppLanguageModel extends ChangeNotifier {
 
     if (type == Locale("ar")) {
       _appLocale = Locale("ar");
-      await Preference.setString(PrefKeys.languageCode, 'ar');
-      await Preference.setString('countryCode', '');
+      // await Preference.setString(PrefKeys.languageCode, 'ar');
+      // await Preference.setString('countryCode', '');
     } else if (type == Locale("en")) {
       _appLocale = Locale("en");
-      await Preference.setString(PrefKeys.languageCode, 'en');
+      // await Preference.setString(PrefKeys.languageCode, 'en');
     }
     notifyListeners();
   }

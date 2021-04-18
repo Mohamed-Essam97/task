@@ -21,18 +21,16 @@ List<SingleChildWidget> providers = [
 
 List<SingleChildWidget> independentServices = [
   // Provider(create: (_) => () => DB()),
-  Provider<Api>(create: (_) => USE_FAKE_IMPLEMENTATION ? FakeApi() : HttpApi()),
-  ChangeNotifierProvider<ConnectivityService>(
-      create: (context) => ConnectivityService()),
+  Provider<Api>(create: (_) =>  HttpApi()),
+  // ChangeNotifierProvider<ConnectivityService>(
+  //     create: (context) => ConnectivityService()),
 ];
 
 List<SingleChildWidget> dependentServices = [
   ProxyProvider<Api, AuthenticationService>(
       update: (context, api, authenticationService) =>
           AuthenticationService(api: api)),
-  ProxyProvider<AuthenticationService, NotificationService>(
-      update: (context, auth, notificationService) =>
-          NotificationService(auth: auth)),
+
 ];
 
 List<SingleChildWidget> uiConsumableProviders = [

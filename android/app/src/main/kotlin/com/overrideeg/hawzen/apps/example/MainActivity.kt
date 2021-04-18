@@ -1,4 +1,4 @@
-package com.overrideeg.example
+package com.example.Mecca
 
 import io.flutter.embedding.android.FlutterActivity
 

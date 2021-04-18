@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:testapp/core/models/api_models.dart';
 import 'package:testapp/core/services/api/api.dart';
-import 'package:ui_utils/ui_utils.dart';
 
 import '../../../ui/routes/route.dart';
 import '../preference/preference.dart';
@@ -59,7 +58,7 @@ class AuthenticationService {
   /*
    *check if user is authenticated 
    */
-  bool get userLoged => Preference.getBool(PrefKeys.userLogged) ?? false;
+  // bool get userLoged => Preference.getBool(PrefKeys.userLogged) ?? false;
 
   StreamController<User> _userController = StreamController<User>();
 
@@ -70,33 +69,32 @@ class AuthenticationService {
   /*
    * load the user info from shared prefrence if existed to be used in the service   
    */
-  Future<void> get loadUser async {
-    if (userLoged) {
-      _user =
-          User.fromJson(json.decode(Preference.getString(PrefKeys.userData)));
-      Logger().i(_user.toJson());
-      print('\n\n\n');
-    }
-  }
+  // Future<void> get loadUser async {
+  //   if (userLoged) {
+  //     _user =
+  //         User.fromJson(json.decode(Preference.getString(PrefKeys.userData)));
+  //     Logger().i(_user.toJson());
+  //     print('\n\n\n');
+  //   }
+  // }
 
   /*
    * signout the user from the app and return to the login screen   
    */
-  Future<void> get signOut async {
-    await Preference.remove(PrefKeys.userData);
-    await Preference.remove(PrefKeys.userLogged);
-    await Preference.remove(PrefKeys.fcmToken);
-    await Preference.remove(PrefKeys.token);
+  // Future<void> get signOut async {
+  //   await Preference.remove(PrefKeys.userData);
+  //   await Preference.remove(PrefKeys.userLogged);
+  //   await Preference.remove(PrefKeys.fcmToken);
+  //   await Preference.remove(PrefKeys.token);
 
-    _user = null;
-  }
+  //   _user = null;
+  // }
 
   static handleAuthExpired({@required BuildContext context}) async {
     if (context != null) {
       try {
-        await Preference.clear();
+        // await Preference.clear();
 
-        UI.pushReplaceAll(context, Routes.splash);
 
         Logger().i('🦄session destroyed🦄');
       } catch (e) {
