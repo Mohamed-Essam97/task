@@ -61,6 +61,18 @@ class LoginWithSocial extends StatelessWidget {
                         SizedBox(
                           height: screenHeight * 0.01,
                         ),
+                        InkWell(
+                          onTap: () async {
+                            UI.push(context, SettingsPage());
+                          },
+                          child: card(
+                              "Enter without login",
+                              "asssetsds/images/facebook.svg",
+                              Colors.white,
+                              context,
+                              Colors.green,
+                              Colors.green),
+                        ),
                       ],
                     ),
                   ),
@@ -71,7 +83,6 @@ class LoginWithSocial extends StatelessWidget {
 
   Widget card(
       name, String icon, color, BuildContext context, bordercColor, textColor) {
-
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -98,7 +109,7 @@ class LoginWithSocial extends StatelessWidget {
                 width: 90,
               ),
               Text(
-              name,
+                name,
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,

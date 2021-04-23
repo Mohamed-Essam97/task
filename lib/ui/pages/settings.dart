@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:base_notifier/base_notifier.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -13,6 +14,10 @@ import 'package:http/http.dart' as http;
 import 'package:ping_discover_network/ping_discover_network.dart';
 import 'package:wifi_info_flutter/wifi_info_flutter.dart';
 import 'package:wifi/wifi.dart';
+import 'package:printing/printing.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:printing/printing.dart';
 
 class SettingsPage extends StatelessWidget {
   User user;
@@ -34,46 +39,58 @@ class SettingsPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Center(
-                        child: CachedNetworkImage(
-                          imageUrl: user.photoURL,
-                          imageBuilder: (context, imageProvider) => Container(
-                            width: screenWidth / 3,
-                            height: screenWidth / 3,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(80),
-                              image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.cover,
-                              ),
+                      user == null
+                          ? SizedBox()
+                          : Column(
+                              children: [
+                                Center(
+                                  child: CachedNetworkImage(
+                                    imageUrl: user.photoURL == null
+                                        ? "https://img.icons8.com/pastel-glyph/2x/person-male.png"
+                                        : user.photoURL,
+                                    imageBuilder: (context, imageProvider) =>
+                                        Container(
+                                      width: screenWidth / 3,
+                                      height: screenWidth / 3,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(80),
+                                        image: DecorationImage(
+                                          image: imageProvider,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    placeholder: (context, url) =>
+                                        CircularProgressIndicator(),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  user.displayName == null
+                                      ? "User"
+                                      : user.displayName,
+                                  style: TextStyle(
+                                      color: Colors.blue[800],
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  user.email == null ? "user" : user.email,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                              ],
                             ),
-                          ),
-                          placeholder: (context, url) =>
-                              CircularProgressIndicator(),
-                          errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        user.displayName,
-                        style: TextStyle(
-                            color: Colors.blue[800],
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        user.email,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
+
                       Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: TextFormField(
@@ -114,24 +131,46 @@ class SettingsPage extends StatelessWidget {
                           raduis: 8,
                         ),
                       ),
-                      Text("You Have ${model.devices.length} Device"),
-                      DropdownButton<String>(
-                          items: model.devices.map((String val) {
-                            return DropdownMenuItem<String>(
-                              value: val,
-                              child: new Text(val),
-                            );
-                          }).toList(),
-                          hint: Text(dropdownValue),
-                          onChanged: (String val) {
-                            dropdownValue = val;
-                            model.setState();
-                          })
+                      Container(
+                        height: 600,
+                        child: PdfPreview(
+                          build: (format) => _generatePdf(format, "asd"),
+                        ),
+                      ),
+                      // DropdownButton<String>(
+                      //     items: model.devices.map((String val) {
+                      //       return DropdownMenuItem<String>(
+                      //         value: val,
+                      //         child: new Text(val),
+                      //       );
+                      //     }).toList(),
+                      //     hint: Text(dropdownValue),
+                      //     onChanged: (String val) {
+                      //       dropdownValue = val;
+                      //       model.setState();
+                      //     })
                     ],
                   ),
                 ),
               ),
             ));
+  }
+
+  Future<Uint8List> _generatePdf(PdfPageFormat format, String title) async {
+    final pdf = pw.Document();
+
+    pdf.addPage(
+      pw.Page(
+        pageFormat: format,
+        build: (context) {
+          return pw.Center(
+            child: pw.Text(title),
+          );
+        },
+      ),
+    );
+
+    return pdf.save();
   }
 
   String dropdownValue = "Choose";
@@ -159,6 +198,17 @@ class SettingsPageModel extends BaseNotifier {
       }
     });
   }
+
+  final doc = pw.Document();
+  fun() {
+    doc.addPage(pw.Page(
+        pageFormat: PdfPageFormat.a4,
+        build: (pw.Context context) {
+          return pw.Center(
+            child: pw.Text('Hello World'),
+          ); // Center
+        }));
+  } //
 
   List<String> devices = [];
 

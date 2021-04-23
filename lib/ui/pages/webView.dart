@@ -17,7 +17,7 @@ class WebViewPage extends StatelessWidget {
         model: WebViewPageModel(context: context),
         builder: (context, model, _child) => Scaffold(
               body: WebviewScaffold(
-                url: "https://www.${webUrl}.com",
+                url: "$webUrl",
                 appBar: new AppBar(
                   title: new Text(webUrl),
                   backgroundColor: Colors.blue[800],
